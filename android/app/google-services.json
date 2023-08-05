@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "223105032642",
+    "project_id": "news-534ce",
+    "storage_bucket": "news-534ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223105032642:android:02cc34c4d21ce3e779f65b",
+        "android_client_info": {
+          "package_name": "cz.belligerator.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223105032642-up68vg35cvlnkhg3ruh6taubm7er241o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBASQ4__trE7srZAQT2WQ_K89g5vmuGhXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223105032642-up68vg35cvlnkhg3ruh6taubm7er241o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
