@@ -1,4 +1,4 @@
-const kBaseUrl = 'http://192.168.0.100:3000';
+const kBaseUrl = 'https://news.belligerator.cz';
 const kApiUrl = '$kBaseUrl/api';
-const kLocalhostIp = '192.168.0.100'; // server localhost ip
+const kLocalhostIp = '10.6.25.104'; // server localhost ip
 const kBasicAuth = 'YmVsbGlnZXJhdG9yOkhlc2xvMTIz';

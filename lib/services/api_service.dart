@@ -18,7 +18,6 @@ class ApiService {
     ));
 
     api.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
-
       // For using short URL path in requests. We can use eg. /articles/ instead of https://url.com/articles/
       if (!options.path.contains('http')) {
         options.path = kApiUrl + options.path;
@@ -39,11 +38,8 @@ class ApiService {
 
   /// Get all articles by article type. If tagId is provided, only articles with this tag will be returned.
   Future<List<ArticleDto>> getArticles(String articleType, String? tagId) async {
-    return api.get('/articles/$articleType', queryParameters: {
-      'page': 1,
-      'count': 100,
-      'tagId': tagId ?? ''
-    }).then((response) {
+    return api.get('/articles/$articleType', queryParameters: {'page': 1, 'count': 100, 'tagId': tagId ?? ''}).then(
+        (response) {
       return (response.data as List).map((e) => ArticleDto.fromJSON(e)).toList(growable: false);
     }).catchError((onError) {
       Utils.showSnackBar(body: 'Articles cannot be loaded');
@@ -53,11 +49,8 @@ class ApiService {
 
   /// Search articles by article type and pattern.
   Future<List<ArticleDto>> searchArticles(String articleType, String pattern) async {
-    return api.get('/articles/search/$articleType', queryParameters: {
-      'page': 1,
-      'count': 100,
-      'pattern': pattern
-    }).then((response) {
+    return api.get('/articles/search/$articleType',
+        queryParameters: {'page': 1, 'count': 100, 'pattern': pattern}).then((response) {
       return (response.data as List).map((e) => ArticleDto.fromJSON(e)).toList(growable: false);
     }).catchError((onError) {
       Utils.showSnackBar(body: 'Articles cannot be loaded');
@@ -77,10 +70,11 @@ class ApiService {
 
   /// Send push notification token to server.
   void updateToken(String token) {
-    api.post('/token').then((response) {
-      print('Token updated');
-    }).catchError((onError) {
-      print('Token cannot be updated');
-    });
+    api.post('/push-notifications/token', data: {'token': token, 'language': 'en'})
+      .then((response) {
+        print('Token updated');
+      }).catchError((onError) {
+        print('Token cannot be updated: $onError');
+      });
   }
 }
