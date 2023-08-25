@@ -77,9 +77,7 @@ class ApiService {
   void updateToken(String token) {
     api.post('/push-notifications/token', data: {'token': token, 'language': 'en'})
       .then((response) {
-        print('Token updated');
       }).catchError((onError) {
-        print('Token cannot be updated: $onError');
       });
   }
 }

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               FocusManager.instance.primaryFocus?.unfocus();
             }
           },
-          child: AllArticlesPage()),
+          child: const AllArticlesPage()),
     );
   }
 }

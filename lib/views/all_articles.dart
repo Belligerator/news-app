@@ -63,7 +63,9 @@ class _AllArticlesPageState extends State<AllArticlesPage> {
     _debounce = Timer(const Duration(milliseconds: 500), () async {
 
       // Reset selected tag.
-      tags.forEach((element) => element.selected = false);
+      for (var element in tags) {
+        element.selected = false;
+      }
       _selectedTagId = null;
 
       // If pattern is empty, get all articles.

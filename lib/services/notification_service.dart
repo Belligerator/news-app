@@ -26,7 +26,6 @@ class NotificationsService {
   /// Get the initial message when the app is opened from a terminated state.
   void _onInitialMessageReceived() {
     FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) async {
-      print("On init message received");
       if (message != null) {
         _onNotificationReceived(message);
       }
@@ -36,7 +35,6 @@ class NotificationsService {
   /// Get the token from the device.
   void _getToken() {
     FirebaseMessaging.instance.getToken().then((String? fcmToken) async {
-      print('token get: $fcmToken');
       _onTokenUpdated(fcmToken);
     });
   }
@@ -44,10 +42,8 @@ class NotificationsService {
   /// Refresh the token.
   void _onTokenRefresh() {
     FirebaseMessaging.instance.onTokenRefresh.listen((String fcmToken) async {
-      print('token refreshed: $fcmToken');
       _onTokenUpdated(fcmToken);
     }).onError((err) {
-      print('Cannot generate token: $err');
     });
   }
 
@@ -56,13 +52,11 @@ class NotificationsService {
 
     // Receive messages in the foreground.
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print('Got a message whilst in the foreground!');
       _onNotificationReceived(message);
     });
 
     // Receive messages in the background.
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
-      print('Got a message whilst in the background!');
       _onNotificationReceived(message);
     });
   }
