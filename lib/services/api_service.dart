@@ -38,8 +38,13 @@ class ApiService {
 
   /// Get all articles by article type. If tagId is provided, only articles with this tag will be returned.
   Future<List<ArticleDto>> getArticles(String articleType, String? tagId) async {
-    return api.get('/articles/$articleType', queryParameters: {'page': 1, 'count': 100, 'tagId': tagId ?? ''}).then(
-        (response) {
+    Map<String, dynamic> query = {'page': 1, 'count': 100};
+
+    if (tagId != null && tagId.isNotEmpty) {
+      query['tagId'] = tagId;
+    }
+
+    return api.get('/articles/$articleType', queryParameters: query).then((response) {
       return (response.data as List).map((e) => ArticleDto.fromJSON(e)).toList(growable: false);
     }).catchError((onError) {
       Utils.showSnackBar(body: 'Articles cannot be loaded');

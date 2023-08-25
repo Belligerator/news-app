@@ -52,7 +52,7 @@ class _AllArticlesPageState extends State<AllArticlesPage> {
     setState(() {});
   }
 
-  /// Search articles by pattern.
+  /// Search articles by pattern. Use debounce to prevent multiple API calls.
   Future<void> _search(String pattern) async {
     // Cancel previous timer.
     if (_debounce != null && _debounce!.isActive) {

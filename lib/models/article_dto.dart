@@ -26,11 +26,6 @@ class ArticleDto {
       return null;
     }
 
-    if (coverImage.startsWith('http')) {
-      coverImage = coverImage.replaceFirst('localhost', '192.168.0.100'); // for local development
-      return coverImage;
-    }
-
     return '$kBaseUrl/$coverImage';
   }
 }
