@@ -40,13 +40,13 @@ class _AllArticlesPageState extends State<AllArticlesPage> {
   }
 
   /// Get tags from API.
-  void _getTags() async {
+  Future<void> _getTags() async {
     tags = await _apiService.getTags();
     setState(() {});
   }
 
   /// Get articles from API.
-  void _getArticles() async {
+  Future<void> _getArticles() async {
     articles = await _apiService.getArticles(_selectedIndex == 0 ? 'news' : 'story', _selectedTagId);
     _refreshController.refreshCompleted();
     setState(() {});

@@ -40,7 +40,7 @@ class ArticleDetail extends StatelessWidget {
                 ),
                 UIHelper.verticalSpaceSmall(),
                 Visibility(
-                  visible: article.coverImage != null,
+                  visible: article.coverImage != null && article.coverImage!.isNotEmpty,
                   child: Image.network(article.coverImage ?? ''),
                 ),
                 UIHelper.verticalSpaceSmall(),
